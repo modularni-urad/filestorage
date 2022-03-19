@@ -11,7 +11,7 @@ module.exports = async (event) => {
   const filePath = path.join(consts.DATA_FOLDER, fileName)
   assertFolder(path.dirname(filePath))
   await makeBackup(filePath)
-  const uploaded = path.join(__dirname, consts.STORAGE_PATH, event.file.id)
+  const uploaded = path.join(process.cwd(), consts.STORAGE_PATH, event.file.id)
   mv(uploaded, filePath, err => {
     err && console.error(err)
   })
