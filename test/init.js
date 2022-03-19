@@ -7,7 +7,7 @@ module.exports = (g) => {
   process.env.SERVER_SECRET = 'secret'
   process.env.DATA_FOLDER = path.resolve('./.files')
   const port = process.env.PORT || 3333
-  const mockUser = { path: '/folder1/*' }
+  const mockUser = { paths: ['/folder1/*'] }
   Object.assign(g, {
     port,
     baseurl: `http://localhost:${port}`,
