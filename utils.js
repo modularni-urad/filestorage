@@ -1,4 +1,6 @@
-exports.getMetaItem = function (metadata, name) {
+const removeDiacritics = require('diacritics').remove
+
+function getMetaItem (metadata, name) {
   const regex = new RegExp(`${name} (.+)$`)
   try {
     const line = metadata.split(',').find(i => i.match(regex))
@@ -6,4 +8,10 @@ exports.getMetaItem = function (metadata, name) {
   } catch (_) {
     return ''
   }
+}
+exports.getMetaItem = getMetaItem
+
+exports.getFileName = function (metadata) {
+  const fileName = getMetaItem(metadata, 'filename')
+  return removeDiacritics(fileName).replace(/ /g,'')
 }

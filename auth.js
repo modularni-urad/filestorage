@@ -16,7 +16,7 @@ module.exports = function _checkToken (req, res, next) {
 
   jwt.verify(token, SECRET, (err, decoded) => {
     if (err) return res.status(401).send(err)
-    const fileName = utils.getMetaItem(req.headers['upload-metadata'], 'filename')
+    const fileName = utils.getFileName(req.headers['upload-metadata'])
     if (_isAllowedToWrite(decoded.paths, fileName)) return next()
     res.status(401).send('not allowed to write')
   })

@@ -57,7 +57,7 @@ module.exports = (g) => {
       var options = {
         endpoint: g.baseurl,
         metadata: {
-          filename: '/folder1/README.md',
+          filename: '/folděr 1/REAĎME.md',
           filetype: 'text/plain',
           Bearer: g.token
         },

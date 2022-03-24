@@ -7,7 +7,7 @@ const consts = require('./consts')
 
 module.exports = async (event) => {
   // console.log(`Upload complete for file ${event.file.id}`)
-  const fileName = utils.getMetaItem(event.file.upload_metadata, 'filename')
+  const fileName = utils.getFileName(event.file.upload_metadata)
   const filePath = path.join(consts.DATA_FOLDER, fileName)
   assertFolder(path.dirname(filePath))
   await makeBackup(filePath)
